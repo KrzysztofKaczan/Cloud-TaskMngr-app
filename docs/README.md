@@ -17,8 +17,7 @@
 | Backend     | Node.js             | Azure App Service       |
 | Baza danych | SQL Server (Docker) | Azure SQL Database      |
 
+## Status Projektu i dokumentacja
 
-## Status Projektu i dokumentacja 
-
-* [x] **Artefakt 1:** Zaplanowano strukturę folderów i diagram C4 dostępny w /docs 
-* [] **Artefakt 2:** Konfiguracja środowiska docker 
+- [x] **Artefakt 1:** Zaplanowano strukturę folderów i diagram C4 dostępny w /docs
+- [x] **Artefakt 2:** Konfiguracja środowiska docker
