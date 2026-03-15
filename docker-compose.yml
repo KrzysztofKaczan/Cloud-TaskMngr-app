@@ -2,28 +2,28 @@ version: '3.8'
 
 services:
   frontend:
-    image: nginx:alpine
+    build: ./frontend
     container_name: cloud_frontend
     ports:
-      - '3000:80'
+      - '8080:80'
     restart: always
 
-  backend:
-    image: node:24-alpine
-    container_name: cloud_backend
-    # Komenda utrzymująca kontener przy życiu zanim dodasz prawdziwy kod
-    command: sh -c "echo 'Backend runs...' && tail -f /dev/null"
-    ports:
-      - '8080:8080'
-    restart: always
+#  backend:
+#    image: node:24-alpine
+#    container_name: cloud_backend
+# Komenda utrzymująca kontener przy życiu zanim dodasz prawdziwy kod
+#    command: sh -c "echo 'Backend runs...' && tail -f /dev/null"
+#    ports:
+#      - '8080:8080'
+#    restart: always
 
-  database:
-    image: postgres:15-alpine
-    container_name: cloud_database
-    environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: password123
-      POSTGRES_DB: clouddb
-    ports:
-      - '5432:5432'
-    restart: always
+#  database:
+#    image: postgres:15-alpine
+#    container_name: cloud_database
+#    environment:
+#      POSTGRES_USER: root
+#      POSTGRES_PASSWORD: password123
+#      POSTGRES_DB: clouddb
+#    ports:
+#      - '5432:5432'
+#    restart: always
