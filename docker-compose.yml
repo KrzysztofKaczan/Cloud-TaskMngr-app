@@ -8,15 +8,13 @@ services:
       - '8080:80'
     restart: always
 
-#  backend:
-#    image: node:24-alpine
-#    container_name: cloud_backend
-# Komenda utrzymująca kontener przy życiu zanim dodasz prawdziwy kod
-#    command: sh -c "echo 'Backend runs...' && tail -f /dev/null"
-#    ports:
-#      - '8080:8080'
-#    restart: always
-
+  backend:
+    build: ./backend
+    container_name: cloud_backend
+    ports:
+      - '8081:8080'
+    restart: always
+    
 #  database:
 #    image: postgres:15-alpine
 #    container_name: cloud_database

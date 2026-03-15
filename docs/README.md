@@ -21,4 +21,5 @@
 
 - [x] **Artefakt 1:** Zaplanowano strukturę folderów i diagram C4 dostępny w /docs
 - [x] **Artefakt 2:** Konfiguracja środowiska docker
-- [x] **Artefakt 3:** Front end
+- [x] **Artefakt 3:** Frontend
+- [x] **Artefakt 4:** Backend
