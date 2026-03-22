@@ -1,0 +1,14 @@
+C4Container
+title Diagram Kontenerów (Level 2) - Architektura 3-warstwowa
+
+Person(user, "Użytkownik", "Użytkownik końcowy")
+
+System_Boundary(c1, "Cloud App") {
+    Container(frontend, "Frontend", "React 19", "Interfejs SPA")
+    Container(backend, "Backend", "Node 24", "Logika biznesowa")
+    ContainerDb(database, "Baza", "Azure SQL", "Dane aplikacji")
+}
+
+Rel_D(user, frontend, "Używa", "HTTPS")
+Rel_D(frontend, backend, "API", "JSON/HTTPS")
+Rel_D(backend, database, "Zapis/Odczyt", "TCP")
