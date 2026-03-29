@@ -1,0 +1,59 @@
+version: '3.8'
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    user: '0:0'
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=TwojeHaslo123!
+    volumes:
+      - sql-data-final:/var/opt/mssql/data # To zapewnia trwałość
+    restart: always
+
+  backend:
+    build: ./backend
+    ports:
+      - '8081:8080'
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    ports:
+      - '8080:80'
+
+networks:
+  cloud-network:
+    driver: bridge
+
+volumes:
+  sql-data-final:
+    external: true
+
+# version: '3.8'
+
+# services:
+#   frontend:
+#     build: ./frontend
+#     container_name: cloud_frontend
+#     ports:
+#       - '8080:80'
+#     restart: always
+
+#   backend:
+#     build: ./backend
+#     container_name: cloud_backend
+#     ports:
+#       - '8081:8080'
+#     restart: always
+
+#  database:
+#    image: postgres:15-alpine
+#    container_name: cloud_database
+#    environment:
+#      POSTGRES_USER: root
+#      POSTGRES_PASSWORD: password123
+#      POSTGRES_DB: clouddb
+#    ports:
+#      - '5432:5432'
+#    restart: always
