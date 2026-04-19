@@ -1,9 +1,16 @@
 import { useState, useEffect } from 'react';
 // Zwróć uwagę na ścieżkę do api. Jeśli wklejasz to do Dashboards.tsx, zmień na: import api from '../services/api';
 import api from './services/api'; 
+import axios from 'axios';
+
+interface Task {
+  id: string | number;
+  name: string;
+  isCompleted: boolean;
+}
 
 function App() {
-  const [tasks, setTasks] = useState<any[]>([]);
+  const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskName, setNewTaskName] = useState('');
 
   // Pobieranie zadań przy starcie
@@ -33,6 +40,16 @@ function App() {
     }
   };
 
+
+  const deleteTask = async (id: string | number) => {
+    await axios.delete(`https://twój-backend.azurewebsites.net/api/tasks/${id}`);
+    setTasks(tasks.filter(t => t.id !== id));
+  };
+
+
+
+
+
   return (
     <div style={{ padding: '20px', fontFamily: 'sans-serif' }}>
       <h2>📋 Moje Zadania w Chmurze</h2>
@@ -52,9 +69,10 @@ function App() {
 
       {/* LISTA ZADAŃ */}
       <ul style={{ listStyleType: 'none', padding: 0 }}>
-        {tasks.map((task: any) => (
+        {tasks.map((task: Task) => (
           <li key={task.id} style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>
             {task.isCompleted ? "✅" : "⏳"} <strong>{task.name}</strong>
+            <button onClick={() => deleteTask(task.id)} style={{color: 'red'}}>Usuń</button>
           </li>
         ))}
       </ul>
