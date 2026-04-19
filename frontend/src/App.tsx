@@ -46,7 +46,7 @@ function App() {
           style={{ padding: '8px', marginRight: '10px', width: '250px' }}
         />
         <button onClick={addTask} style={{ padding: '8px 15px', cursor: 'pointer' }}>
-          Dodaj zadanie
+          Dodaj zadanie dla jego booooooooooo tak trzeba 
         </button>
       </div>
 
