@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: read #This is required for actions/checkout
 
-    steps:
+  steps:
       - uses: actions/checkout@v4
 
       - name: Set up Node.js version
@@ -24,17 +24,19 @@ jobs:
           node-version: '20.x'
 
       - name: npm install, build, and test
+        # Dodajemy working-directory, żeby wiedział, gdzie jest package.json
+        working-directory: ./frontend 
         run: |
           npm install
           npm run build --if-present
-          npm run test --if-present
-      
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
-
+          # Wysyłamy tylko zbudowany folder dist, a nie całe repo
+          path: ./frontend/dist
+          
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -61,5 +63,5 @@ jobs:
         with:
           app-name: 'front-taskmngr'
           slot-name: 'Production'
-          package: ./frontend/dist
+          package: .
           

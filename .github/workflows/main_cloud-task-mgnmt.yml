@@ -15,7 +15,7 @@ jobs:
     permissions:
       contents: read #This is required for actions/checkout
 
-    steps:
+  steps:
       - uses: actions/checkout@v4
 
       - name: Set up .NET Core
@@ -23,11 +23,16 @@ jobs:
         with:
           dotnet-version: '8.x'
 
+      # Budujemy konkretny projekt w folderze
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build backend/backend.csproj --configuration Release
+
+      # KROK DO ZADANIA 8.1 - Uruchomienie Twojego testu
+      - name: Run Tests
+        run: dotnet test CloudBackend.Tests/CloudBackend.Tests.csproj --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish backend/backend.csproj -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
