@@ -58,5 +58,4 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'cloud-task-mgnmt'
-          package: ./backend
-          
+          package: ./backend/bin/Release/net8.0/publish
