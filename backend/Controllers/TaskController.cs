@@ -57,9 +57,12 @@ public class TasksController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
-        if (id > 2) return NotFound("Zadanie nie istnieje.");
-        return NoContent(); 
+        var task = await _context.Tasks.FindAsync(id);
+        if (task == null) return NotFound();
+        _context.Tasks.Remove(task);
+        await _context.SaveChangesAsync();
+        return NoContent();
     }
 }
