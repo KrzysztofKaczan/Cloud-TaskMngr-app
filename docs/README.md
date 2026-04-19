@@ -24,3 +24,6 @@
 - [x] **Artefakt 3:** Frontend
 - [x] **Artefakt 4:** Backend
 - [x] **Artefakt 5:** Przygotowanie do clouda + db 
+- [x] **Artefakt 6:** cloud + db 
+- [x] **Artefakt 7:** Klucze  
+- [x] **Artefakt 8:** Testy i Automatyzacja 
