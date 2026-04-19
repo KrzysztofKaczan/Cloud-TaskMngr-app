@@ -42,7 +42,7 @@ function App() {
 
 
   const deleteTask = async (id: string | number) => {
-    await axios.delete(`https://cloud-task-mgnmt.azurewebsites.net/api/tasks/${id}`);
+    await axios.delete(`https://cloud-task-mgnmt-fzebftfqcxcuc3d9.swedencentral-01.azurewebsites.net/api/tasks/${id}`);
     setTasks(tasks.filter(t => t.id !== id));
   };
 
